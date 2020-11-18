@@ -87,8 +87,33 @@ const Bar = {
 const Item = {
   create(obj) {
     const item = document.createElement('li');
-    item.innerHTML = `<span>${obj.name}${obj instanceof S ? ' - ₹' + obj.price : ''}</span>`;
-    item.addEventListener('click', () => obj.click());
+
+    if (obj instanceof S) {
+      item.classList.add('service');
+
+      const span = document.createElement('span');
+      span.innerHTML = obj.name;
+
+      const spanPrice = document.createElement('span');
+      spanPrice.classList.add('price');
+      spanPrice.innerHTML = `₹${obj.price}`;
+
+      span.appendChild(spanPrice);
+
+      const addtocart = document.createElement('input');
+
+      addtocart.setAttribute('value', 'ADD TO CART');
+      addtocart.setAttribute('type', 'button');
+      addtocart.addEventListener('click', () => obj.click());
+
+      span.appendChild(addtocart);
+
+      item.appendChild(span);
+    } else {
+      item.innerHTML = `<span>${obj.name}</span>`;
+      item.addEventListener('click', () => obj.click());
+    }
+
     return item;
   },
 };

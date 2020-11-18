@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: "Lato", sans-serif;
   color: rgb(50, 50, 50);
   /* overflow-x: hidden; */
   margin: 0;
@@ -19,10 +19,13 @@ header {
 }
 #logo {
   position: absolute;
-  font-size: 50px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+#logo img {
+  margin-top: 2.5px;
+  height: 95px;
 }
 header .cart {
   position: absolute;
@@ -90,21 +93,21 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: url('1.jpg');
+  background: url('../images/background/1.jpg');
   background-size: cover;
-  animation: navslides 15s infinite;
+  /* animation: navslides 15s infinite; */
 }
 @keyframes navslides {
   0% {
-    background: url('1.jpg');
+    background: url('../images/background/1.jpg');
     background-size: cover;
   }
   33% {
-    background: url('2.jpg');
+    background: url('../images/background/2.jpg');
     background-size: cover;
   }
   67% {
-    background: url('3.jpg');
+    background: url('../images/background/3.jpg');
     background-size: cover;
   }
   100% {
@@ -202,7 +205,8 @@ body > section {
   padding: 0 10px;
 }
 .list li {
-  background-color: white;
+  background-color: black;
+  color: white;
   width: 250px;
   min-height: 30px;
   cursor: pointer;
@@ -214,12 +218,33 @@ body > section {
   display: flex;
   padding: 10px 0;
 }
+.list li.service {
+  min-height: 150px;
+  cursor: auto;
+}
 .list li span {
   display: block;
   position: relative;
   margin: auto;
   width: 80%;
   text-align: center;
+}
+.list li.service span {
+}
+.list li.service span span {
+  color: lightgreen;
+  margin: 10px;
+}
+.list li.service input {
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  background-color: darkgreen;
+  color: white;
+  font-weight: 600;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
 }
 @media only screen and (max-width: 850px) {
   nav > div {
