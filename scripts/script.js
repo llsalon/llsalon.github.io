@@ -27,15 +27,25 @@ elq('header button.cart').addEventListener('click', () => Cart.ui.toggle());
 // Service
 class S {
   static count = 0;
-  constructor(name, price) {
+  constructor(name, price, options = null) {
     this.id = ++S.count;
     this.name = name;
     this.price = price;
     servicesMap.set(this.id, this);
+
+    if (options !== null) {
+      if ('image' in options) {
+        this.image = options.image;
+      }
+    }
   }
   click() {
     console.log(`Click ${this.name} service`);
     Cart.add(this);
+  }
+  setImage(image) {
+    if (this.image) return;
+    this.image = image;
   }
 };
 
@@ -43,9 +53,22 @@ const servicesMap = new Map();
 
 // Type
 class T {
-  constructor(name, data) {
+  constructor(name, data, options = null) {
     this.name = name;
     this.data = data;
+
+    if (options !== null) {
+      if ('image' in options) {
+        this.setImage(options.image);
+      }
+    }
+  }
+  setImage(image) {
+    if (this.image) return;
+    this.image = image;
+    for (const item of this.data) {
+      item.setImage(image);
+    }
   }
   click() {
     if (this.list) {
@@ -90,6 +113,9 @@ const Item = {
 
     if (obj instanceof S) {
       item.classList.add('service');
+      if (obj.image) {
+        item.style.backgroundImage = `url(../images/services/${obj.image})`;
+      }
 
       const span = document.createElement('span');
       span.innerHTML = obj.name;
@@ -108,6 +134,9 @@ const Item = {
 
       span.appendChild(addtocart);
 
+      const cover = document.createElement('div');
+
+      item.appendChild(cover);
       item.appendChild(span);
     } else {
       item.innerHTML = `<span>${obj.name}</span>`;
@@ -425,7 +454,9 @@ const services = new T('Services', [
         new S('Stomach Wax', 345),
         new S('Back Wax', 445),
       ]),
-    ]),
+    ], {
+      image: 'waxing.jpg',
+    }),
     new T('Facials', [
       new S('VLCC Fruit Facial', 445),
       new S('VLCC Brightning Glow Facial', 445),
@@ -439,7 +470,9 @@ const services = new T('Services', [
       new S('O3+ Bridal Radiant and Glowing Skin Facial', 1695),
       new S('O3+ Bridal Vitamin - C Glowing Skin Facial', 1695),
       new S('O3+ Bridal Oxygenating Glow Skin Facial', 1695),
-    ]),
+    ], {
+      image: 'facial.jpg',
+    }),
     new T('Manicure and Pedicure', [
       new S('Classic Manicure', 345),
       new S('Classic Pedicure', 495),
@@ -449,7 +482,9 @@ const services = new T('Services', [
       new S('Detan Pedicure', 795),
       new S('Cut, File and Polish Feet', 195),
       new S('Cut, File and Polish Hands', 195),
-    ]),
+    ], {
+      image: 'pedicure.jpg',
+    }),
     new T('Threading and Face Wax', [
       new S('Upper Lip Face Wax', 55),
       new S('Chin Face Wax', 75),
@@ -460,7 +495,9 @@ const services = new T('Services', [
       new S('Upper Lip Threading', 20),
       new S('Eyebrow Theading', 30),
       new S('Chin Threading', 30),
-    ]),
+    ], {
+      image: 'threading.jpg',
+    }),
     new T('Bleach/Detan', [
       new S('Face and Neck Bleach', 295),
       new S('Full arms Bleach', 345),
@@ -474,7 +511,9 @@ const services = new T('Services', [
       new S('Front Detan Pack', 345),
       new S('Back Detan Pack', 345),
       new S('Full Body Detan', 1295),
-    ]),
+    ], {
+      image: 'bleach.jpg',
+    }),
   ])
 ]);
 
