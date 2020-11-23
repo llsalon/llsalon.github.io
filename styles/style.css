@@ -1,7 +1,6 @@
 body {
   font-family: "Lato", sans-serif;
   color: rgb(50, 50, 50);
-  /* overflow-x: hidden; */
   margin: 0;
   background-image: linear-gradient(to right, rgb(100, 150, 255), violet);
 }
@@ -97,7 +96,7 @@ nav {
   justify-content: center;
   background: url('../images/background/1.jpg');
   background-size: cover;
-  /* animation: navslides 15s infinite; */
+  animation: navslides 15s infinite;
 }
 @keyframes navslides {
   0% {

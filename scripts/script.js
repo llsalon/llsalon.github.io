@@ -514,7 +514,59 @@ const services = new T('Services', [
     ], {
       image: 'bleach.jpg',
     }),
-  ])
+  ]),
+  new T('Hair Services', [
+    new T('For Women', [
+      new T('Hair Colour', [
+        new S('Hair Colour Application (Colour should be provided by client)', 299, {time: 30}),
+        new S('Hair Henna Application', 299, {time: 30}),
+        new S('L\'Oreal Root Touch-up (Majiral Colour No. 2, 3, 4, 5)', 599, {time: 30}),
+        new S('L\'Oreal Global Colour (upto shoulder)', 1599),
+        new S('L\'Oreal Global Colour (below shoulder)', 2199),
+        new S('L\'Oreal Global Colour (upto waist)', 2799),
+        new S('L\'Oreal Global Colour (below waist)', 3399),
+      ]),
+      new T('Hair Styling', [
+        new S('Blow Dry Hair Styling', 299, {time: 30}),
+        new S('Hair Ironing', 349, {time: 40}),
+        new S('Tongs/Curling Hair Styling', 349, {time: 40}),
+      ]),
+      new T('Hair Care', [
+        new S('Relaxing Head Massage', 299, {time: 25}),
+        new S('L\'Oreal Nourishing Hair Spa', 799, {time: 60}),
+        new S('Keratin Treatment', 2295, {time: 120}),
+      ]),
+      new T('Highlights & Fashion Colour', [
+        new S('Highlights', 1999, {time: 90}),
+        new S('Fashion Colour', 2399, {time: 90}),
+      ]),
+    ]),
+    new T('For Men', [
+      new S('Haircut + 5 minutes Head Massage', 199, {time: 40}),
+      new S('Head, Neck & Shoulder Massage', 199, {time: 40}),
+      new S('Beard Trimming + 15 minutes Head Massage', 199, {time: 40}),
+      new S('Clean Shave', 99, {time: 20}),
+      new S('Beard Trimming & Styling', 99, {time: 25}),
+      new S('Head Massage', 50, {time: 10}),
+      new S('Head Massage', 100, {time: 20}),
+      new S('Detan Face & Neck', 395),
+      new S('Lara Detan Face & Neck', 195),
+      new S('Hair Colour (Colour should be provided by client)', 125, {time: 30}),
+      new S('Hair Spa', 399, {time: 30}),
+    ]),
+  ]),
+  new T('Packages', [
+    new T('For Men', [
+      new S('Hair Cut + Beard Trim/Shave + VLCC Detan Facial', 599, {time: 110}),
+      new S('Hair Cut + Beard Trim/Shave', 299, {time: 60}),
+      new S('Hair Cut + Beard Trim/Shave + 10 minutes Head Massage', 299, {time: 60}),
+      new S('Hair Cut + 25 minutes Head Massage', 299, {time: 60}),
+      new S('Hair Cut + Beard Trim + Cleanup + Detan Facial', 499, {time: 90}),
+      new S('Hair Cut + Hair Application', 299, {time: 65}),
+      new S('Hair Cut + Shave + 20 minutes Head Massage', 325, {time: 70}),
+      new S('Hair Cut + Beard Trim + Hair Colour Application', 399, {time: 80}),
+    ]),
+  ]),
 ]);
 
 Stack.push(services);
