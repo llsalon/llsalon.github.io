@@ -2,6 +2,8 @@ const eli = el => document.getElementById(el);
 const elq = el => document.querySelector(el);
 const elqa = el => document.querySelectorAll(el);
 
+const ENV = 'prod';
+
 const scrollToElement = (elem) => {
   const coors = elem.getBoundingClientRect();
   try {
@@ -40,7 +42,7 @@ class S {
     }
   }
   click() {
-    console.log(`Click ${this.name} service`);
+    ENV == 'dev' && console.log(`Click ${this.name} service`);
     Cart.add(this);
   }
   setImage(image) {
@@ -320,7 +322,7 @@ const Cart = {
       actions.classList.add('actions');
 
       name.innerHTML = item.service.name;
-      price.innerHTML = item.service.price;
+      price.innerHTML = `₹${item.service.price}`;
       quantity.innerHTML = item.quantity;
       this.genActions(item).map(el => actions.appendChild(el));
 
@@ -344,7 +346,7 @@ const Cart = {
       quantity.innerHTML = item.quantity;
     },
     setTotal(val) {
-      this.total.innerHTML = val;
+      this.total.innerHTML = `₹${val}`;
     },
   },
   load() {
@@ -403,11 +405,21 @@ const Cart = {
     if (!cart) return;
 
     for (const item of JSON.parse(cart)) {
-      console.log(item);
+      ENV == 'dev' && console.log(item);
       for (let i = 0; i < item.qty; i++) this.add(servicesMap.get(item.id));
     }
   },
+  generateMessage() {
+    return this.data.store
+      .reduce((str, item) => `${str}\n${item.quantity} x ${item.service.name},`, 'Hi, can you please book services for ')
+      .slice(0, -1);
+  },
 };
+
+document.getElementById('buyButton').addEventListener(
+  'click',
+  () => window.open(`https://wa.me/918882518150?text=${encodeURIComponent(Cart.generateMessage())}`),
+);
 
 const services = new T('Services', [
   new T('Beauty Services', [
@@ -554,7 +566,6 @@ const services = new T('Services', [
       new S('Head Massage', 50, {time: 10}),
       new S('Head Massage', 100, {time: 20}),
       new S('Detan Face & Neck', 395),
-      new S('Lara Detan Face & Neck', 195),
       new S('Hair Colour (Colour should be provided by client)', 125, {time: 30}),
       new S('Hair Spa', 399, {time: 30}),
     ]),
@@ -571,7 +582,7 @@ const services = new T('Services', [
       new S('Hair Cut + Beard Trim + Hair Colour Application', 399, {time: 80}),
     ]),
     new T('Evergreen Packages', [
-      new S('NORMAL Money Regular Wax Full Arms + Half Leg Wax + VLCC Fruit/Anti-Tan/Brightening glow facial + low touch threading (eyebrows)', 602, {actualPrice: 735, discount: 18}),
+      new S('NORMAL Honey Regular Wax Full Arms + Half Leg Wax + VLCC Fruit/Anti-Tan/Brightening glow facial + low touch threading (eyebrows)', 602, {actualPrice: 735, discount: 18}),
       new S('GLOVITE Facial + RICA Wax Full Arms + Under Arms + Half Legs + Low-Touch Threading Eye Brows', 1353, {actualPrice: 1650, discount: 18}),
       new S('L\'Oreal GLOVITE/Tan Clear Facial + RICA Full Arms + Full legs + Classic Pedicure + Low-Touch Threading Eyebrows', 1717, {discount: 25, actualPrice: 2290}),
       new S('Mani-Pedi Classic - L\'Oreal HairSpa + Classic Manicure + Classic Pedicure + Face Hair Threading Eye-Brows, Upper Lips', 1275, {discount: 25, actualPrice: 1700}),

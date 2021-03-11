@@ -58,11 +58,14 @@ header div.cart h2 {
   font-size: 30px;
   font-weight: 200;
 }
+header div.cart .menu {
+  overflow-y: auto;
+  height: 300px;
+}
 header div.cart table {
   box-sizing: border-box;
   padding: 0 10px;
   width: 100%;
-  overflow-y: auto;
 }
 header div.cart table tr:nth-child(1) {
   font-size: 20px;
@@ -86,6 +89,29 @@ header div.cart div.bottom {
   bottom: 0;
   border-radius: 0 0 5px 5px;
   background-color: rgba(200, 200, 200, 0.2);
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+header div.cart div.bottom .container {
+  display: flex;
+  height: 100%;
+  width: 50%;
+  align-items: center;
+  margin: 0 10px;
+}
+header div.cart div.bottom .container h3 {
+  margin: 0 10px;
+}
+#buyButton input {
+  border: 0;
+  background-color: #075E54;
+  height: 100%;
+  border-radius: 5px;
+  font-size: 20px;
+  color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 nav {
   width: 100%;
@@ -154,7 +180,7 @@ body > section {
 #services {
   margin-bottom: 50px;
 }
-#services h2 {
+section h2 {
   color: white;
   font-size: 40px;
   text-align: center;
@@ -244,16 +270,32 @@ body > section {
   margin: 10px;
 }
 .list li.service input {
-  width: 100px;
-  height: 30px;
+  width: 120px;
+  height: 40px;
   text-align: center;
   background-color: darkgreen;
   color: white;
+  transition: background 0.4s, color 0.4s;
   font-weight: 600;
   border: 0;
   border-radius: 5px;
   cursor: pointer;
 }
+.list li.service input:active {
+  background-color: lightgreen;
+}
+
+#contact article {
+  max-width: 95%;
+  width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
 @media only screen and (max-width: 850px) {
   nav > div {
     flex-direction: column;

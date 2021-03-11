@@ -12,17 +12,24 @@
     <button class="cart">Cart</button>
     <div class="cart">
       <h2>Cart</h2>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Actions</th>
-        </tr>
-      </table>
+      <div class="menu">
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+          </tr>
+        </table>
+      </div>
       <div class="bottom">
-        <h3>Total</h3>
-        <span id="totalValue"></span>
+        <div class="container">
+          <h3>Total:</h3>
+          <span id="totalValue"></span>
+        </div>
+        <a id="buyButton">
+          <input type="button" value="Order on WhatsApp">
+        </a>
       </div>
     </div>
   </header>
@@ -63,6 +70,13 @@
     <h2>Services</h2>
     <div id="location"><div class="back">❮Back</div></div>
     <div id="lists"></div>
+  </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <article>
+      <a href="https://wa.me/918882518150"><p><strong>Phone Number:</strong> +91 888 251 8150</p></a>
+      <a href="mailto:layeredluxurysalon@gmail.com"><p><strong>Email:</strong> layeredluxurysalon@gmail.com</p></a>
+    </article>
   </section>
   <script type="module" src="./scripts/script.js"></script>
 </body>
